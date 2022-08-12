@@ -1,0 +1,3 @@
+[console_scripts]
+AnnoSpat = AnnoSpat.run:main
+

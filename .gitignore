@@ -1,0 +1,11 @@
+# macOS
+._.DS_Store
+.DS_Store
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Emacs backup files
+*~
