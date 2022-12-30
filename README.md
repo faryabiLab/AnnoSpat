@@ -13,13 +13,7 @@ Python 3.6 and libraries:
 ## Implementation
 To implement `Annospat`, the script `classify_IMCcells.py` takes as input the path to the raw proteomics matrix (with cells on rows and proteins as columns) and a signature file holding the canonical protein markers. 
 
-Sample run:
-```bash
-pip install AnnoSpat
-```
-```
-AnnoSpat generateLabels --inputfile data/<file.csv> --markerfile data/signatures_T1D.csv --output dir output_Annospat
-```
+
 ```
 
 Usage: AnnoSpat generateLabels [OPTIONS]
@@ -45,4 +39,14 @@ Options:
 
   -b, --fileseparator TEXT        [default: ,] #file spearator    
     
+```
+
+
+Sample run:
+```bash
+pip install -i https://test.pypi.org/simple/ AnnoSpat
+```
+```
+mkdir outputdir
+AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D.csv -o outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename'
 ```
