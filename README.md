@@ -15,7 +15,6 @@ To implement `Annospat`, the script `classify_IMCcells.py` takes as input the pa
 
 
 ```
-
 Usage: AnnoSpat generateLabels [OPTIONS]
 
   Generate cell type annotations
@@ -38,8 +37,8 @@ Options:
                                   99.9,99.9,99.9,  99.5,99.5]] #adaptive thresholds for each protein
 
   -b, --fileseparator TEXT        [default: ,] #file spearator    
-    
 ```
+
 Sample run:
 ```bash
 pip install -i https://test.pypi.org/simple/ AnnoSpat
@@ -47,5 +46,6 @@ pip install -i https://test.pypi.org/simple/ AnnoSpat
 ```
 mkdir outputdir
 ```
-```AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D.csv -o outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename'
+```
+AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D.csv -o outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename'
 ```
