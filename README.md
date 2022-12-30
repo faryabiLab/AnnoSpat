@@ -21,7 +21,7 @@ Usage: AnnoSpat generateLabels [OPTIONS]
 
 Options:
   -i, --inputfile TEXT            [required] #path ot input proteomics file
-  -m, --markerfile TEXT           [required] #path to markers file
+  -m, --markerfile TEXT           [required] #path to marker file
   -o, --outputdir TEXT            [required] #path to output dir
   -f, --firstprotein TEXT         [required] #first protein to pick in the proteomics file
   -l, --lastprotein TEXT          [required] #last protein to pick in the proteomics file
@@ -49,3 +49,4 @@ mkdir outputdir
 ```
 AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D.csv -o outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename'
 ```
+Please replace the arguments to --inputfile/-i argument, --markerfile/-m argument and other arguments as per your own paths to proteomics and marker files and data.
