@@ -50,8 +50,8 @@ def anno(
     # data_path = '' #'data/mgDF.csv'
     # signature_path= '' #'data/signatures_T1D.csv'
     # op_dir = 'output_AnnoSpat'
-    # p1 = 'HLA.ABCp' # first protein/column in protein expression file
-    # p2 = 'Ghrelinp' # last protein/column in protein expression file
+    # p1 = 'HLA.ABC' # first protein/column in protein expression file
+    # p2 = 'Ghrelin' # last protein/column in protein expression file
     # roi_name_col = 'TIFFfilename'
 
     #optional
