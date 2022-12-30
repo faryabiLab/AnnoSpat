@@ -47,7 +47,10 @@ From your working directory, execute:
 ```
 mkdir outputdir
 ```
-<!-- AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D.csv -o outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename' -->
+<!-- AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D.csv -o outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename' 
+
+python3 run.py generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D_withImmuneCelltypes_withNegMarkers_d.csv -o delete_outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'Status'
+-->
 ```
 AnnoSpat generateLabels -i <path_to_proteomics_matrix> -m <path_to_marker_file> -o outputdir -f <first_protein_name> -l <last_protein_name> -r <name_of_col_holding_diseaseStatus>
 ```
