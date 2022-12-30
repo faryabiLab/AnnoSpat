@@ -40,13 +40,12 @@ Options:
   -b, --fileseparator TEXT        [default: ,] #file spearator    
     
 ```
-
-
 Sample run:
 ```bash
 pip install -i https://test.pypi.org/simple/ AnnoSpat
 ```
 ```
 mkdir outputdir
-AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D.csv -o outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename'
+```
+```AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D.csv -o outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename'
 ```
