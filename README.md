@@ -12,7 +12,7 @@ Python 3.6 and libraries:
 
 ## Implementation
 `Annospat` can be used as a python library or as a command line tool using the argument `generateLabels` which takes as input the path to the raw proteomics matrix (with cells on rows and proteins as columns) and a signature file holding the canonical protein markers with other data related inputs. 
-The tool is available for installation at "[https://pypi.org/project/AnnoSpat/1.0.0/](https://pypi.org/project/AnnoSpat/1.0.0/)"
+The tool is available for installation at [https://pypi.org/project/AnnoSpat/1.0.0/](https://pypi.org/project/AnnoSpat/1.0.0/)
 
 ```
 Usage: AnnoSpat generateLabels [OPTIONS]
