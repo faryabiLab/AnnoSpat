@@ -32,6 +32,8 @@ Please replace the arguments to --inputfile/-i argument, --markerfile/-m argumen
 
 ## Running from source 
 
+Dependencies: Python 3.6 and libraries->numpy, scikit-learn, pandas 
+
 > git clone https://github.com/faryabiLab/AnnoSpat.git
 
 > cd AnnoSpat
@@ -67,4 +69,5 @@ Options:
   -b, --fileseparator TEXT        [default: ,] #file spearator    
 ```
 
+Once the cell type annotations are obtained, The neighborhood analysis with point process can be implemented as shown in as described at: [Too-Many-Cells](https://gregoryschwartz.github.io/too-many-cells/#spatial)
 
