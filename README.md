@@ -33,8 +33,11 @@ Please replace the arguments to --inputfile/-i argument, --markerfile/-m argumen
 ## Running from source 
 
 > git clone https://github.com/faryabiLab/AnnoSpat.git
+
 > cd AnnoSpat
+
 > mkdir outputdir
+
 > python3 run.py generateLabels -i <path_to_proteomics_matrix> -m <path_to_marker_file> -o outputdir -f <first_protein_name> -l <last_protein_name> -r <name_of_col_holding_ROInames>
 
 
