@@ -1,8 +1,0 @@
-,Beta_Cells,Alpha_Cells,Delta_Cells,Gamma_Cells,Eplsilon_Cells,Acinar_Cells,Ductal_Cells,Endothelial_Cells,ECM_cells,B_Cells,Helper_T_Cells,Killer_T_Cells,Memory_T_Cells,Regulatory_T_Cells,Myeloid_Cells,NK_Cells
-1,C.peptide,Glucagon,Somatostatin,PP,Ghrelin,pS6,Keratin,CD31,Collagen,CD20,CD4,CD8,CD45RO,Foxp3,CD11b,CD56
-2,NKX61,,PDX.1,Glucagon-,,,CD44,Nestin,,CD3-,CD3,CD3,CD4,CD4,CD68,CD3-
-3,PDX.1,,,,,,PDX.1,,,CD56-,CD8-,CD4-,CD8-,CD8-,CD14,CD20-
-4,,,,,,,NKX61,,,CD68-,CD56-,CD56-,CD56-,CD56-,HLA.DR,
-5,,,,,,,CA2,,,CD11b-,CD68-,CD68-,CD68-,CD68-,CD3-,
-,,,,,,,,,,CD14-,CD11b-,CD11b-,CD11b-,CD11b-,CD20-,
-,,,,,,,,,,,CD14-,CD14-,CD14-,CD14-,CD56-,
