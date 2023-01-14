@@ -1,15 +1,10 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[21]:
-
 
 import warnings
 import pandas as pd
 import numpy as np
 import os
 import time
-##import matplotlib.pyplot as plt
+
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 import pickle
@@ -21,13 +16,9 @@ import subprocess
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 
-# In[26]:
-
-
 def anno(data_path, signature_path, op_dir, p1, p2,toDrop, roi_name_col,disease_status_col,classifier,th,adaptive_th_vec,sampling_ratio,suffix,fileseparator):
     print('\nStarting cell type annotation.....\n')
 
-    #toDrop=''
     
     raw_data_file = pd.read_csv(data_path, index_col=0, sep=fileseparator) # contains "cells" on rows and "proteins", "ROI_name","disease status" (optional), cell coordinates (optional) on columns
     signatures=pd.read_csv(signature_path , index_col=0) 
@@ -68,8 +59,6 @@ def anno(data_path, signature_path, op_dir, p1, p2,toDrop, roi_name_col,disease_
     dict_celltypes= { ii : signatures.columns[ii] for ii in range(len(signatures.columns)) }
     dict_celltypes.update({ len(signatures.columns): 'Unknown'})
 
-    #np.save('../Python_objects/CTmap'+suffix+'.npy', dict_celltypes) 
-    #dict_celltypes = np.load('../Python_objects/CTmap'+suffix+'.npy',allow_pickle='TRUE').item()
 
     imc_forSSC_raw=raw_data_tr.copy()
     imc_forSSC_raw.index=np.arange(len(imc_forSSC_raw) ) #to avoid descripency in initial labelling
@@ -85,7 +74,6 @@ def anno(data_path, signature_path, op_dir, p1, p2,toDrop, roi_name_col,disease_
     imc_forSSC=pd.DataFrame(imc_forSSC_log, index=imc_forSSC_raw.index,columns= imc_forSSC_raw.columns )
     if(un==1):
         #log tr data (reduce the effect of outliers)
-        #imc_forSSC=pd.DataFrame(  imc_forSSC, index=imc_forSSC.index,columns= imc_forSSC.columns ) #less accurate than log tr in terms of visulaization
         imc_forSSC=pd.DataFrame( preprocessing.normalize(imc_forSSC_log, norm='l2'), index=imc_forSSC_raw.index,columns= imc_forSSC_raw.columns )
 
 
@@ -100,12 +88,10 @@ def anno(data_path, signature_path, op_dir, p1, p2,toDrop, roi_name_col,disease_
     assigned_centroids = np.zeros(len(imc_forSSC), dtype = np.int32)-1
 
     #### get order of cell type abundance
-
     dec_abudance_ind=get_cell_type_abundance(imc_forSSC_raw , signatures)
 
     #### Initial labelling to get the supervised samples
-
-    (assigned_centroids,centroids ) = initial_labelling(assigned_centroids, centroids, imc_forSSC, signatures, dec_abudance_ind, th,adaptive_th_vec)
+    (assigned_centroids,centroids,good_cells_ind_allcts_list) = initial_labelling(assigned_centroids, centroids, imc_forSSC, signatures, dec_abudance_ind, th,adaptive_th_vec)
 
     write_initial_labels(assigned_centroids , raw_data_tr.index,raw_data_te.index,op_dir, suffix)
 
@@ -113,14 +99,12 @@ def anno(data_path, signature_path, op_dir, p1, p2,toDrop, roi_name_col,disease_
     
     print("-----Estimating cell types using Semi supervised clustering-----\n")
     
+    #print(dec_abudance_ind)
+    #print(imc_forSSC.values[0:5,0:5] , centroids[0:5,0:5], assigned_centroids)
+    
     kmeans = ssKMeans(k=k )
 
     kmeans.fit( imc_forSSC.values , centroids, assigned_centroids)
-
-#     with open('models/model_kmeans.pkl', 'wb') as dictionary_file:
-#         pickle.dump(kmeans, dictionary_file)
-#     with open('AnnoSpat/models/model_kmeans.pkl', 'rb') as dictionary_file:
-#         kmeans = pickle.load(dictionary_file)
 
     print("-------------------------Done-------------------------\n")
     toc=time.time()
@@ -151,65 +135,6 @@ def anno(data_path, signature_path, op_dir, p1, p2,toDrop, roi_name_col,disease_
     print("Saving Annotations in: "+op_dir+'/trte_labels_numericLabels_'+classifier+suffix+'.csv')
 
     print("-------------------------Done-------------------------\n")
-# In[27]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[19]:
-
-
-### spatial analysis
-
-import pathlib
-def spatial(marks, labels, out, ip_roi):
-    
-    #Rscript pp.R --marks "Alpha_Cells,B_Cells" --labels /mnt/data1/gw/research/sc_integration/labels/labels_aanchal_imc.csv --out out_dir/ --input /mnt/data1/gw/research/sc_integration/data/imc/split_wide_data/20181130_HPAP003_1_C_ROI4.tif_mat.csv
-    
-    
-    #print('pwd: ', subprocess.check_output('pwd') )
-    command = 'sudo Rscript'
-    SCRIPT_PATH = pathlib.Path(__file__).parent
-    path2script = str(SCRIPT_PATH)+'/pp.R' #'/sample_Rscript.R'
-    #print("R script at: ",path2script)
-    args = [marks, labels, out, ip_roi]
-    cmd = [path2script] + args#[command, path2script] + args
-    cmd
-    print("printing the sytem command:",cmd)
-    os.system("chmod +x "+path2script)
-    os.system("sudo "+path2script+" --marks "+marks+" --labels "+labels+" --out "+ out+" --input "+ip_roi)
-    #subprocess.check_output(cmd, universal_newlines=True)
-    #x = subprocess.check_output(cmd, universal_newlines=True)
-    #print('The #rows and cols is (from R script):', x)
-
-
-# In[ ]:
-
 
 
 

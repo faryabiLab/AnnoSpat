@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
-
 
 import typer
 from AnnoSpat import classify_IMCcells
@@ -44,31 +37,15 @@ def anno(
     signature_path = (Path(os.getcwd()) / signature_path).resolve()
     op_dir = str( (Path(os.getcwd()) / op_dir).resolve() )
     
-#    print("PATHS = ",data_path, signature_path, op_dir)
-    
-    #compulsory
-    # data_path = '' #'data/mgDF.csv'
-    # signature_path= '' #'data/signatures_T1D.csv'
-    # op_dir = 'output_AnnoSpat'
-    # p1 = 'HLA.ABC' # first protein/column in protein expression file
-    # p2 = 'Ghrelin' # last protein/column in protein expression file
-    # roi_name_col = 'TIFFfilename'
-
-    #optional
-    
-#     suffix = '_IMC_T1D_AnnoSpat'
-#     disease_status_col = '' # disease_status_col = 'Status'
-#     classifier = 'ELM'#
-#     th=[99.9, 99.999, 70] 
-#     adaptive_th_vec=[99.5,99.5,99.5,99.5,99.9,  99,99.5,  99,99,  99.5,99.9,  99.9,99.9,99.9,  99.5,99.5] # 2 adaptive_th_vec
 
     #fixed
-    sampling_ratio=0.5 # train test ratio (50% train ROIs labelled using semi supervised clustering, remaining test ROIs labelled by training classifier )
+    sampling_ratio=0.5 
 
         
     # input modifications
     th_str_temp = th_str[1: len(th_str) -1].split(',')
     th = [float(item) for item in th_str_temp]
+    print("IP th = ", th[0], th[1], th[2], float(th[1]), float(th[2]))
 
     adaptive_th_vec_str_temp = adaptive_th_vec_str[1: len(adaptive_th_vec_str) -1].split(',')
     adaptive_th_vec = [float(item) for item in adaptive_th_vec_str_temp]
@@ -76,20 +53,6 @@ def anno(
            
     classify_IMCcells.anno(data_path, signature_path, op_dir, p1, p2, toDrop, roi_name_col,disease_status_col,classifier,th,adaptive_th_vec,   sampling_ratio,suffix,fileseparator)
 
-
-    
-@app.command('findPattern')
-def spatial(
-    ip_roi: str = typer.Option(..., "--input",'-i',help="Input ROI file "),
-    out: str = typer.Option(..., "--out",'-o',help="Path of directory to save output files"),
-    labels: str = typer.Option(..., "--labels",'-l',help="Predicted cell labels (optional)"),
-    marks: str = typer.Option(..., "--marks",'-m',help="Comma separated list of Cell types")
-):
-    """ Finds patterns in across cell types using generated annotations
-    """
-    print("=====Function chosen: SPATIAL ANALYSIS=====")
-    classify_IMCcells.spatial(marks, labels, out, ip_roi)
-    
 
 
 def main():

@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="AnnoSpat",
-    version="0.1.23",
+    version="1.0.0",
     author="Aanchal Mongia",
     author_email="aanchal.mongia@pennmedicine.upenn.edu",
     description="A tool for annotating and inferring patterns in single cells from spatial proteomics",

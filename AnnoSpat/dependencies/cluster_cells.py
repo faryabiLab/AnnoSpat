@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
 
 
 import numpy as np
@@ -16,6 +12,7 @@ class ssKMeans(BaseEstimator):
         self.tol = tol
 
     def _e_step(self, X):
+        
         
         temp = euclidean_distances(X, self.cluster_centers_,
                                  squared=True).argmin(axis=1)
@@ -44,17 +41,10 @@ class ssKMeans(BaseEstimator):
         n_samples = X.shape[0]
         vdata = np.mean(np.var(X, 0))
 
-        #random_state = check_random_state(self.random_state)
-        #self.labels_ = random_state.permutation(n_samples)[:self.k] #not actualy label but a temp variable used to initialize centers
-        #self.cluster_centers_ = X[self.labels_]
-        
         self.labels_initial_=assigned_centroids
         self.mask = (assigned_centroids==-1)
         self.labels_=[]
-        #print(self.labels_initial_, type(self.labels_initial_))
-        #print(self.mask, type(self.mask))
-        
-        
+
         self.cluster_centers_ = centroids
         
 
