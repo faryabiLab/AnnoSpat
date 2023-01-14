@@ -14,6 +14,9 @@ The tool is available for installation at [https://pypi.org/project/AnnoSpat/1.0
 
 
 ## Installation
+Dependencies: Python 3.6, pip 
+Libraries->numpy, scikit-learn, pandas 
+
 > pip install AnnoSpat==1.0.0
 
 
@@ -21,7 +24,8 @@ From your working directory, execute:
 ```
 mkdir outputdir
 ```
-<!-- AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D_withImmuneCelltypes_withNegMarkers_d.csv -o delete_outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename' -t '[99.9,99.999,70]' -a '[99.5,99.5,99.5,99.5,99.9,99,99.5,99,99,99.5,99.9,99.9,99.9,99.9,99.5,99.9]' -d 'Status'
+<!--
+ AnnoSpat generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D_withImmuneCelltypes_withNegMarkers_d.csv -o delete_outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'TIFFfilename' -t '[99.9,99.999,70]' -a '[99.5,99.5,99.5,99.5,99.9,99,99.5,99,99,99.5,99.9,99.9,99.9,99.9,99.5,99.9]' -d 'Status'
 
 python3 run.py generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.csv -m /mnt/data2/aanchal/data/IMC_T1D/signatures_T1D_withImmuneCelltypes_withNegMarkers_d.csv -o delete_outputdir -f 'HLA.ABC' -l 'Ghrelin' -r 'Status'
 -->
@@ -29,20 +33,6 @@ python3 run.py generateLabels -i /mnt/data2/aanchal/data/IMC_T1D/raw_data/mgDF.c
 AnnoSpat generateLabels -i <path_to_proteomics_matrix> -m <path_to_marker_file> -o outputdir -f <first_protein_name> -l <last_protein_name> -r <name_of_col_holding_ROInames>
 ```
 Please replace the arguments to --inputfile/-i argument, --markerfile/-m argument and other arguments as per your own paths to proteomics and marker files and data.
-
-## Running from source 
-
-Dependencies: Python 3.6 and libraries->numpy, scikit-learn, pandas 
-
-> git clone https://github.com/faryabiLab/AnnoSpat.git
-
-> cd AnnoSpat
-
-> mkdir outputdir
-
-> python3 run.py generateLabels -i <path_to_proteomics_matrix> -m <path_to_marker_file> -o outputdir -f <first_protein_name> -l <last_protein_name> -r <name_of_col_holding_ROInames>
-
-
 
 ```
 Usage: AnnoSpat generateLabels [OPTIONS]
@@ -68,6 +58,24 @@ Options:
 
   -b, --fileseparator TEXT        [default: ,] #file spearator    
 ```
+
+<!--
+## Edit source 
+
+
+
+> git clone https://github.com/faryabiLab/AnnoSpat.git
+
+> cd AnnoSpat
+
+
+> mkdir outputdir
+
+> python3 run.py generateLabels -i <path_to_proteomics_matrix> -m <path_to_marker_file> -o outputdir -f <first_protein_name> -l <last_protein_name> -r <name_of_col_holding_ROInames>
+-->
+
+
+
 
 Once the cell type annotations are obtained, The neighborhood analysis with point process can be implemented as shown in as described at: [Too-Many-Cells](https://gregoryschwartz.github.io/too-many-cells/#spatial)
 
