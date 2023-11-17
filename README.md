@@ -14,7 +14,7 @@ The tool is available for installation at [https://pypi.org/project/AnnoSpat/1.0
 
 
 ## Installation
-Dependencies: Python 3.6, pip 
+Dependencies: Python 3.6+, pip 
 Libraries->numpy, scikit-learn, pandas 
 
 > pip install AnnoSpat==1.0.0
