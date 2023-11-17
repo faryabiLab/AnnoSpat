@@ -48,7 +48,7 @@ Options:
   -r, --roicol TEXT               [required] #ROI column
   -n, --colsToNeglect TEXT        [default: ] #proteins to negelct in the proteomics file
   -d, --diseasecol TEXT           [default: ] # T1D/control
-  -s, --suffix TEXT               [default: _IMC_T1D_AnnoSpat] #suffix to be given
+  -s, --suffix TEXT               [default: _Data_AnnoSpat] #suffix to be given
   -c, --classifier TEXT           [default: ELM] #classifier to use 
   -t, --thresholdmaxandunknown TEXT
                                   [default: [99.999, 70]] #thresholds for each protein default: b/w 99 and 99.9
