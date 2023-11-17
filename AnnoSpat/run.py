@@ -20,7 +20,7 @@ def anno(
     disease_status_col: str = typer.Option('', "--diseasecol","-d",help=""),
     suffix: str = typer.Option('_Data_AnnoSpat', "--suffix","-s",help=""),
     classifier: str = typer.Option('ELM', "--classifier","-c",help=""),
-    th_str: str = typer.Option('[99.999, 70]', "--thresholdmaxandunknown", "-t",help=""),
+    th_str: str = typer.Option('[99.9,99.999,70]', "--thresholdmaxandunknown", "-t",help=""),
     adaptive_th_vec_str: str = typer.Option('[99.5,99.5,99.5,99.5,99.9,  99,99.5,  99,99,  99.5,99.9,  99.9,99.9,99.9,  99.5,99.5]', "--thresholdadaptive","-a",help=""),
     fileseparator: str = typer.Option(',', "--fileseparator","-b",help="")
     
