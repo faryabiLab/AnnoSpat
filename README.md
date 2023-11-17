@@ -58,6 +58,7 @@ Options:
 
   -b, --fileseparator TEXT        [default: ,] #file spearator    
 ```
+NOTE: The number of values in  "adaptive_th_vec_str" is assumed to be the same as no of cell types as each value by definition correspond to the threshold to be taken for each cell type.
 
 <!--
 ## Edit source 
